@@ -1,0 +1,24 @@
+{
+  "name": "as-template-reference",
+  "version": "1.0.0",
+  "description": "The canonical reference template for all repositories, providing a shared foundation of architecture, tools, and best practices.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/albertoscandolara/as-template-reference.git"
+  },
+  "author": "Alberto Scandolara",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/albertoscandolara/as-template-reference/issues"
+  },
+  "homepage": "https://github.com/albertoscandolara/as-template-reference#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0"
+  }
+}
