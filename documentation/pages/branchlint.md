@@ -74,19 +74,22 @@ This config is used by Husky before pushing a branch.
 
 ``` json
 {
-  "prefixes": [
-    "feature",
-    "feat",
-    "bugfix",
-    "fix",
-    "hotfix",
-    "release",
-    "chore"
-  ],
-  "disallowed": ["main", "master", "develop"],
-  "regex": "^(feature|feat|bugfix|fix|hotfix|release|chore)\\/[a-z0-9]+(?:-[a-z0-9]+)*$",
-  "regexOptions": "i"
+  "branchNameLinter": {
+    "prefixes": [
+      "feature",
+      "feat",
+      "bugfix",
+      "fix",
+      "hotfix",
+      "release",
+      "chore"
+    ],
+    "disallowed": ["main", "master", "develop"],
+    "regex": "^(feature|feat|bugfix|fix|hotfix|release|chore)\\/[a-z0-9]+(?:-[a-z0-9]+)*$",
+    "regexOptions": "i"
+  }
 }
+
 ```
 
 ------------------------------------------------------------------------
