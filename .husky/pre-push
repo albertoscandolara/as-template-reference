@@ -1,2 +1,2 @@
 # 1️⃣ Check branch name
-npx branch-name-lint
+npx branch-name-lint --config .branchlintrc.json
