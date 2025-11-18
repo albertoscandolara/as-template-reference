@@ -1,2 +1,5 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
 # 1️⃣ Check branch name
-npx branch-name-lint --config .branchlintrc.json
+scripts/check-branch.sh

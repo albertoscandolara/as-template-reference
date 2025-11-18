@@ -26,25 +26,16 @@ Clear and consistent branch names help to:
 Branch names are validated using: [branch-name-lint](https://www.npmjs.com/package/branch-name-lint) is used.
 
 Validation happens in two places:
-1. Locally, through Husky
+1. Locally via Husky (pre-push)
+2. In CI via GitHub Actions
 
-A pre-push Git hook checks your branch name before the push is allowed.
-
-Config file: ```/.branchlintrc.json```
-
-2. In CI, through GitHub Actions
-
-A workflow validates branch names in PRs and pushes.
-
-Config file: ```/.branchlintrc-ci.json```
-
-This double protection ensures nobody can bypass the rules — intentionally or accidentally.
+Both use the same base rules, but CI has special logic to skip protected branches.
 
 ------------------------------------------------------------------------
 
 ## Conventional Branch Specification
 
-Our rules follow the [Conventional Branch 1.0.0](https://conventional-branch.github.io/#specification) naming standard:
+These rules follow the [Conventional Branch](https://conventional-branch.github.io/#specification) naming standard:
 
 It defines the format:
 
@@ -61,16 +52,20 @@ Valid types include:
 -   `release` --- preparing a new release
 -   `chore` --- maintenance, dependencies, documentation updates
 
-Descriptions must be lowercase, hyphen-separated, and concise (e.g.,
-`feature/add-login-page`).
+Descriptions must be:
+- lowercase
+- hyphen-separated
+- concise 
 
-------------------------------------------------------------------------
+(e.g.,`feature/add-login-page`).
+
+---
 
 ## Local Linter Configuration
 
 File: ```/.branchlintrc.json```
 
-This config is used by Husky before pushing a branch.
+This file defines the complete set of rules used locally and in CI:
 
 ``` json
 {
@@ -84,63 +79,56 @@ This config is used by Husky before pushing a branch.
       "release",
       "chore"
     ],
-    "disallowed": ["main", "master", "develop"],
-    "regex": "^(feature|feat|bugfix|fix|hotfix|release|chore)\\/[a-z0-9]+(?:-[a-z0-9]+)*$",
-    "regexOptions": "i"
+
+    "suggestions": {
+      "feat": "feature",
+      "fix": "bugfix",
+      "hot": "hotfix",
+      "releases": "release",
+      "docs": "chore",
+      "doc": "chore"
+    },
+
+    "banned": ["wip"],
+    "skip": ["main", "master", "develop"],
+    "disallowed": ["master", "develop", "staging"],
+    "separator": "/",
+
+    "regex": "^(feature|feat|bugfix|fix|hotfix|chore)\\/[a-z0-9]+(?:-[a-z0-9]+)*$|^release\\/v?[0-9]+(?:\\.[0-9]+)+$",
+    "regexOptions": ""
   }
 }
-
 ```
 
-------------------------------------------------------------------------
+Highlights:
 
-## CI Linter Configuration
+- Allows protected branches explicitly
+- Disallows wip/* branches
+- Enforces <type>/<description>
+- Allows dot versions like release/v1.0.0
+- Uses environment variable BRANCH_NAME
 
-File: ```/.branchlintrc/ci.json```
-
-CI should validate most branches but **must allow merges and PRs into main/master/develop**.
-
-``` json
-{
-  "prefixes": ["feature", "bugfix", "fix", "feat", "hotfix", "release", "chore"],
-  "disallowed": ["main", "master", "develop"],
-  "skip": ["main", "master", "develop"]
-}
-```
-Meaning:
-- These protected branches are still considered invalid branch names (cannot name a working branch main)
-- But CI skips validation when the branch being checked is one of them, enabling merges without failing the workflow
-
-------------------------------------------------------------------------
-
-## Why Two Separate Configs?
-
-- Local (Husky) = strict
-
-Developers must name branches correctly before pushing.
-
-- CI = safe
-
-CI validates almost everything but does not block merges to protected branches.
-
-This makes the workflow:
-
-| Workflow Stage                 | Enforced? | Reason                                         |
-|--------------------------------|-----------|------------------------------------------------|
-| Developer pushes a branch      | Yes       | Ensures local consistency                      |
-| Create PR                      | Yes       | Ensures branch is valid                        |
-| Merge into main/master/develop | Allowed   | These branches are intentionally skipped in CI |
-
-------------------------------------------------------------------------
+---
 
 ### Examples of Valid Branch Names
 
-    feature/add-login-form
-    feat/issue-123-dark-mode
-    bugfix/fix-header-alignment
-    fix/crash-on-startup
-    hotfix/security-token-patch
-    release/v1.4.0
-    chore/update-dependencies
+    feature/add-login-page
+    feat/issue-33-dark-mode
+    bugfix/fix-user-avatar
+    hotfix/security-patch
+    release/v1.3.2
+    chore/update-deps
+    develop
+    main
+    master
 
-------------------------------------------------------------------------
+---
+
+### Examples of Valid Branch Names
+
+    wip/test-stuff              ❌ banned
+    bug/fix-header              ❌ “bug” → “bugfix”
+    feature/too--many--dashes   ❌ invalid format
+    feat/UPPERCASE              ❌ must be lowercase
+
+---

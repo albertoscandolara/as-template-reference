@@ -1,5 +1,0 @@
-{
-  "prefixes": ["feature", "bugfix", "fix", "feat" ,"hotfix", "release", "chore"],
-  "disallowed": ["main", "master", "develop"],
-  "skip": ["main", "master", "develop"]
-}
