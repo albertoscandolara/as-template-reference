@@ -39,12 +39,12 @@ jobs:
             BRANCH_NAME="$(git symbolic-ref --short HEAD 2>/dev/null || \
                            git rev-parse --abbrev-ref HEAD 2>/dev/null || \
                            git name-rev --name-only HEAD 2>/dev/null || \
-                           echo "")"
-            # If we still have the literal "HEAD", try parsing GITHUB_REF
+                           true)"
+            # If we still have the literal "HEAD", or nothing, try parsing GITHUB_REF
             if [ "$BRANCH_NAME" = "HEAD" ] || [ -z "$BRANCH_NAME" ]; then
               case "$GITHUB_REF" in
                 refs/heads/*) BRANCH_NAME="${GITHUB_REF#refs/heads/}" ;;
-                refs/tags/*) BRANCH_NAME="${GITHUB_REF#refs/tags/}" ;;
+                refs/tags/*)  BRANCH_NAME="${GITHUB_REF#refs/tags/}" ;;
                 refs/pull/*/merge) BRANCH_NAME="${GITHUB_REF#refs/pull/}" ;;
                 *) BRANCH_NAME="" ;;
               esac
@@ -52,17 +52,19 @@ jobs:
           fi
 
           # Export branch name for subsequent steps
-          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
+          echo "BRANCH_NAME=$BRANCH_NAME" >> "$GITHUB_ENV"
           echo "Branch name detected: '$BRANCH_NAME'"
 
       - name: Fail early if branch name missing
         if: always()
         shell: bash
         run: |
-          if [ -z "${{ env.BRANCH_NAME }}" ]; then
+          # Use runtime environment variable (populated via GITHUB_ENV in the previous step)
+          if [ -z "$BRANCH_NAME" ]; then
             echo "ERROR: Could not determine branch name. Aborting branch-name-lint."
             exit 1
           fi
+          echo "Proceeding with branch-name-lint for '$BRANCH_NAME'"
 
       - name: Check branch name
         run: npx branch-name-lint .branchlintrc.json
