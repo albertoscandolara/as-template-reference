@@ -26,40 +26,44 @@ jobs:
       - run: npm install branch-name-lint --no-save
 
       - name: Extract branch name
+        id: extract_branch
         shell: bash
         run: |
           # Prefer PR source branch
           if [ -n "$GITHUB_HEAD_REF" ]; then
-            BRANCH_NAME="$GITHUB_HEAD_REF"
+            branch="$GITHUB_HEAD_REF"
           # Use the dedicated ref name variable if available (recommended)
           elif [ -n "$GITHUB_REF_NAME" ]; then
-            BRANCH_NAME="$GITHUB_REF_NAME"
+            branch="$GITHUB_REF_NAME"
           else
             # Try multiple git-based methods, avoid literal "HEAD" fallback
-            BRANCH_NAME="$(git symbolic-ref --short HEAD 2>/dev/null || \
-                           git rev-parse --abbrev-ref HEAD 2>/dev/null || \
-                           git name-rev --name-only HEAD 2>/dev/null || \
-                           true)"
+            branch="$(git symbolic-ref --short HEAD 2>/dev/null || \
+                     git rev-parse --abbrev-ref HEAD 2>/dev/null || \
+                     git name-rev --name-only HEAD 2>/dev/null || \
+                     true)"
             # If we still have the literal "HEAD", or nothing, try parsing GITHUB_REF
-            if [ "$BRANCH_NAME" = "HEAD" ] || [ -z "$BRANCH_NAME" ]; then
+            if [ "$branch" = "HEAD" ] || [ -z "$branch" ]; then
               case "$GITHUB_REF" in
-                refs/heads/*) BRANCH_NAME="${GITHUB_REF#refs/heads/}" ;;
-                refs/tags/*)  BRANCH_NAME="${GITHUB_REF#refs/tags/}" ;;
-                refs/pull/*/merge) BRANCH_NAME="${GITHUB_REF#refs/pull/}" ;;
-                *) BRANCH_NAME="" ;;
+                refs/heads/*) branch="${GITHUB_REF#refs/heads/}" ;;
+                refs/tags/*)  branch="${GITHUB_REF#refs/tags/}" ;;
+                refs/pull/*/head) branch="${GITHUB_REF#refs/pull/}" ;;
+                refs/pull/*/merge) branch="${GITHUB_REF#refs/pull/}" ;;
+                *) branch="" ;;
               esac
             fi
           fi
 
-          # Export branch name for subsequent steps
-          echo "BRANCH_NAME=$BRANCH_NAME" >> "$GITHUB_ENV"
-          echo "Branch name detected: '$BRANCH_NAME'"
+          echo "Branch name detected: '$branch'"
+          # Make it available to later steps via GITHUB_ENV and step outputs
+          echo "BRANCH_NAME=$branch" >> "$GITHUB_ENV"
+          echo "branch_name=$branch" >> "$GITHUB_OUTPUT"
 
       - name: Fail early if branch name missing
         if: always()
         shell: bash
+        env:
+          BRANCH_NAME: ${{ steps.extract_branch.outputs.branch_name }}
         run: |
-          # Use runtime environment variable (populated via GITHUB_ENV in the previous step)
           if [ -z "$BRANCH_NAME" ]; then
             echo "ERROR: Could not determine branch name. Aborting branch-name-lint."
             exit 1
@@ -69,4 +73,4 @@ jobs:
       - name: Check branch name
         run: npx branch-name-lint .branchlintrc.json
         env:
-          BRANCH_NAME: ${{ env.BRANCH_NAME }}
+          BRANCH_NAME: ${{ steps.extract_branch.outputs.branch_name }}
