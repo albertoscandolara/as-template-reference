@@ -15,23 +15,31 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Checkout the repository
       - uses: actions/checkout@v4
 
+      # Setup Node.js
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
 
+      # Install branch-name-lint locally (no save)
       - run: npm install branch-name-lint --no-save
 
+      # Extract the branch name into an environment variable
       - name: Extract branch name
         shell: bash
         run: |
-          if [ "${{ github.event_name }}" == "pull_request" ]; then
-            echo "BRANCH_NAME=${{ github.head_ref }}" >> $GITHUB_ENV
+          if [ -n "$GITHUB_HEAD_REF" ]; then
+            # Pull request source branch
+            echo "BRANCH_NAME=$GITHUB_HEAD_REF" >> $GITHUB_ENV
           else
+            # Push branch
             echo "BRANCH_NAME=${GITHUB_REF#refs/heads/}" >> $GITHUB_ENV
           fi
+          echo "Branch name detected: $BRANCH_NAME"
 
+      # Run branch-name-lint
       - name: Check branch name
         run: npx branch-name-lint .branchlintrc.json
         env:
