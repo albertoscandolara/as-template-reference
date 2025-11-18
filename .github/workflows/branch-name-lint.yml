@@ -5,43 +5,35 @@ on:
     branches-ignore:
       - main
       - master
-  pull_request:
-    branches:
-      - main
-      - master
+      - develop
 
 jobs:
   lint-branch-name:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout the repository with full history
+      # 1. Checkout the repository
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      # Setup Node.js
+      # 2. Setup Node.js
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      # Install branch-name-lint
+      # 3. Install branch-name-lint
       - run: npm install branch-name-lint --no-save
 
-      # Extract branch name
-      - name: Extract branch name
-        shell: bash
+      # 4. Set branch name from the Git ref
+      - name: Set branch name
         run: |
-          if [ -n "$GITHUB_HEAD_REF" ]; then
-            # Pull request source branch
-            echo "BRANCH_NAME=$GITHUB_HEAD_REF" >> $GITHUB_ENV
-          else
-            # Push branch
-            echo "BRANCH_NAME=${GITHUB_REF#refs/heads/}" >> $GITHUB_ENV
-          fi
-          echo "Branch name detected: $BRANCH_NAME"
+          # Remove refs/heads/ prefix to get the branch name
+          BRANCH_NAME=${GITHUB_REF#refs/heads/}
+          echo "Detected branch: $BRANCH_NAME"
+          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
 
-      # Run branch-name-lint
+      # 5. Run branch-name-lint using your .branchlintrc.json
       - name: Check branch name
         run: npx branch-name-lint .branchlintrc.json
         env:
