@@ -1,0 +1,38 @@
+name: Branch Name Lint
+
+on:
+  push:
+    branches-ignore:
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
+
+jobs:
+  lint-branch-name:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - run: npm install branch-name-lint --no-save
+
+      - name: Extract branch name
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+            echo "BRANCH_NAME=${{ github.head_ref }}" >> $GITHUB_ENV
+          else
+            echo "BRANCH_NAME=${GITHUB_REF#refs/heads/}" >> $GITHUB_ENV
+          fi
+
+      - name: Check branch name
+        run: npx branch-name-lint .branchlintrc.json
+        env:
+          BRANCH_NAME: ${{ env.BRANCH_NAME }}

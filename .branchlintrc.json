@@ -1,0 +1,30 @@
+{
+  "branchNameLinter": {
+    "prefixes": [
+      "feature",
+      "feat",
+      "bugfix",
+      "fix",
+      "hotfix",
+      "release",
+      "chore"
+    ],
+
+    "suggestions": {
+      "feat": "feature",
+      "fix": "bugfix",
+      "hot": "hotfix",
+      "releases": "release",
+      "docs": "chore",
+      "doc": "chore"
+    },
+
+    "banned": ["wip"],
+    "skip": ["main", "master", "develop"],
+    "disallowed": ["master", "develop", "staging"],
+    "separator": "/",
+
+    "regex": "^(feature|feat|bugfix|fix|hotfix|chore)\\/[a-z0-9]+(?:-[a-z0-9]+)*$|^release\\/v?[0-9]+(?:\\.[0-9]+)+$",
+    "regexOptions": ""
+  }
+}
