@@ -15,33 +15,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 1. Checkout the repository with full history
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
+      # 2. Setup Node.js
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
 
+      # 3. Install branch-name-lint
       - run: npm install branch-name-lint --no-save
 
+      # 4. Extract branch name
       - name: Extract branch name
         id: extract_branch
         shell: bash
         run: |
-          # Prefer PR source branch
           if [ -n "$GITHUB_HEAD_REF" ]; then
             branch="$GITHUB_HEAD_REF"
-          # Use the dedicated ref name variable if available (recommended)
           elif [ -n "$GITHUB_REF_NAME" ]; then
             branch="$GITHUB_REF_NAME"
           else
-            # Try multiple git-based methods, avoid literal "HEAD" fallback
             branch="$(git symbolic-ref --short HEAD 2>/dev/null || \
                      git rev-parse --abbrev-ref HEAD 2>/dev/null || \
-                     git name-rev --name-only HEAD 2>/dev/null || \
-                     true)"
-            # If we still have the literal "HEAD", or nothing, try parsing GITHUB_REF
+                     git name-rev --name-only HEAD 2>/dev/null || true)"
             if [ "$branch" = "HEAD" ] || [ -z "$branch" ]; then
               case "$GITHUB_REF" in
                 refs/heads/*) branch="${GITHUB_REF#refs/heads/}" ;;
@@ -53,23 +52,18 @@ jobs:
             fi
           fi
 
+          if [ -z "$branch" ]; then
+            echo "ERROR: Could not determine branch name!"
+            exit 1
+          fi
+
           echo "Branch name detected: '$branch'"
-          # Make it available to later steps via GITHUB_ENV and step outputs
+
+          # Export to GITHUB_ENV and step outputs
           echo "BRANCH_NAME=$branch" >> "$GITHUB_ENV"
           echo "branch_name=$branch" >> "$GITHUB_OUTPUT"
 
-      - name: Fail early if branch name missing
-        if: always()
-        shell: bash
-        env:
-          BRANCH_NAME: ${{ steps.extract_branch.outputs.branch_name }}
-        run: |
-          if [ -z "$BRANCH_NAME" ]; then
-            echo "ERROR: Could not determine branch name. Aborting branch-name-lint."
-            exit 1
-          fi
-          echo "Proceeding with branch-name-lint for '$BRANCH_NAME'"
-
+      # 5. Run branch-name-lint using the step output
       - name: Check branch name
         run: npx branch-name-lint .branchlintrc.json
         env:
