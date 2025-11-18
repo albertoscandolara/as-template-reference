@@ -5,10 +5,7 @@ on:
     branches-ignore:
       - main
       - master
-  pull_request:
-    branches:
-      - main
-      - master
+      - develop
 
 jobs:
   lint-branch-name:
@@ -28,20 +25,15 @@ jobs:
       # 3. Install branch-name-lint
       - run: npm install branch-name-lint --no-save
 
-      # 4. Set branch name using GitHub context
+      # 4. Set branch name from the Git ref
       - name: Set branch name
-        id: set_branch
-        run: echo "BRANCH_NAME=${BRANCH_NAME}" >> $GITHUB_ENV
-        env:
-          # PR source branch > branch name > full ref
-          BRANCH_NAME: ${{ github.head_ref || github.ref_name || github.ref }}
-
-      # 5. Debug branch
-      - name: Debug branch
         run: |
-          echo "Branch name detected: $BRANCH_NAME"
+          # Remove refs/heads/ prefix to get the branch name
+          BRANCH_NAME=${GITHUB_REF#refs/heads/}
+          echo "Detected branch: $BRANCH_NAME"
+          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
 
-      # 6. Run branch-name-lint
+      # 5. Run branch-name-lint using your .branchlintrc.json
       - name: Check branch name
         run: npx branch-name-lint .branchlintrc.json
         env:
