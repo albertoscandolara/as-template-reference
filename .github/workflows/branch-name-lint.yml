@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout the repository with full history
+      # 1. Checkout the repository
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -28,43 +28,21 @@ jobs:
       # 3. Install branch-name-lint
       - run: npm install branch-name-lint --no-save
 
-      # 4. Extract branch name
-      - name: Extract branch name
-        id: extract_branch
-        shell: bash
+      # 4. Set branch name using GitHub context
+      - name: Set branch name
+        id: set_branch
+        run: echo "BRANCH_NAME=${BRANCH_NAME}" >> $GITHUB_ENV
+        env:
+          # PR source branch > branch name > full ref
+          BRANCH_NAME: ${{ github.head_ref || github.ref_name || github.ref }}
+
+      # 5. Debug branch
+      - name: Debug branch
         run: |
-          if [ -n "$GITHUB_HEAD_REF" ]; then
-            branch="$GITHUB_HEAD_REF"
-          elif [ -n "$GITHUB_REF_NAME" ]; then
-            branch="$GITHUB_REF_NAME"
-          else
-            branch="$(git symbolic-ref --short HEAD 2>/dev/null || \
-                     git rev-parse --abbrev-ref HEAD 2>/dev/null || \
-                     git name-rev --name-only HEAD 2>/dev/null || true)"
-            if [ "$branch" = "HEAD" ] || [ -z "$branch" ]; then
-              case "$GITHUB_REF" in
-                refs/heads/*) branch="${GITHUB_REF#refs/heads/}" ;;
-                refs/tags/*)  branch="${GITHUB_REF#refs/tags/}" ;;
-                refs/pull/*/head) branch="${GITHUB_REF#refs/pull/}" ;;
-                refs/pull/*/merge) branch="${GITHUB_REF#refs/pull/}" ;;
-                *) branch="" ;;
-              esac
-            fi
-          fi
+          echo "Branch name detected: $BRANCH_NAME"
 
-          if [ -z "$branch" ]; then
-            echo "ERROR: Could not determine branch name!"
-            exit 1
-          fi
-
-          echo "Branch name detected: '$branch'"
-
-          # Export to GITHUB_ENV and step outputs
-          echo "BRANCH_NAME=$branch" >> "$GITHUB_ENV"
-          echo "branch_name=$branch" >> "$GITHUB_OUTPUT"
-
-      # 5. Run branch-name-lint using the step output
+      # 6. Run branch-name-lint
       - name: Check branch name
         run: npx branch-name-lint .branchlintrc.json
         env:
-          BRANCH_NAME: ${{ steps.extract_branch.outputs.branch_name }}
+          BRANCH_NAME: ${{ env.BRANCH_NAME }}
