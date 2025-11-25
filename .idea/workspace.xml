@@ -4,34 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fbbe25ca-0273-4421-90df-b062d93a7cd0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/docs/.vitepress/components/Carousel.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/.vitepress/theme/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/public/linkedin-posts/01-husky/1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/public/linkedin-posts/01-husky/2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/public/linkedin-posts/01-husky/3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/public/linkedin-posts/01-husky/4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/public/linkedin-posts/02-branchlint/1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/public/linkedin-posts/02-branchlint/2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/public/linkedin-posts/02-branchlint/3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/public/linkedin-posts/02-branchlint/4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/public/linkedin-posts/02-branchlint/5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/public/linkedin-posts/02-branchlint/6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/public/linkedin-posts/02-branchlint/7.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/public/linkedin-posts/03-commitlint/1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/public/linkedin-posts/03-commitlint/2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/public/linkedin-posts/03-commitlint/3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/public/linkedin-posts/03-commitlint/4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/public/linkedin-posts/03-commitlint/5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/public/linkedin-posts/03-commitlint/6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/public/linkedin-posts/03-commitlint/7.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/pages/branchlint.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/pages/02-branchlint.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/pages/commitlint.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/pages/03-commitlint.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/pages/husky.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/pages/01-husky.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-    </list>
+    <list default="true" id="fbbe25ca-0273-4421-90df-b062d93a7cd0" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,7 +27,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "chore/vitepress-docs",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/alber/Desktop/CV/as-template-reference/public/linkedin-posts/01-husky",
     "node.js.detected.package.eslint": "true",
@@ -95,7 +68,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1763056843932</updated>
-      <workItem from="1763056845178" duration="118154000" />
+      <workItem from="1763056845178" duration="118601000" />
     </task>
     <servers />
   </component>
