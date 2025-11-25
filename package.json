@@ -2,11 +2,14 @@
   "name": "as-template-reference",
   "version": "1.0.0",
   "description": "The canonical reference template for all repositories, providing a shared foundation of architecture, tools, and best practices.",
-  "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "husky"
+    "build": "tsc && vite build",
+    "dev": "vite",
+    "prepare": "husky",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "repository": {
     "type": "git",
@@ -22,6 +25,15 @@
     "@commitlint/cli": "^20.1.0",
     "@commitlint/config-conventional": "^20.0.0",
     "branch-name-lint": "^3.0.1",
-    "husky": "^9.1.7"
+    "husky": "^9.1.7",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.48.0",
+    "vite": "^7.2.4",
+    "vite-plugin-dts": "^4.5.4",
+    "vite-plugin-static-copy": "^3.1.4",
+    "vitepress": "^1.6.4"
+  },
+  "dependencies": {
+    "swiper": "^12.0.3"
   }
 }
