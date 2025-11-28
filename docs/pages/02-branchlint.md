@@ -123,6 +123,7 @@ feat/UPPERCASE
 ```
 
 ## Useful links
+
 - [NPM](https://www.npmjs.com/package/branch-name-lint)
 - [Conventional branch specification](https://conventional-branch.github.io/)
 - [Linkedin post](https://www.linkedin.com/posts/alberto-scandolara-1391a1161_husky-branch-activity-7396929204744806400-s_tn?utm_source=share&utm_medium=member_desktop&rcm=ACoAACamDX0BK3N7o8SxZvoV-hVVD9MzaGojAg4)

@@ -25,6 +25,12 @@ const features = [
     description: 'Standardized commit message rules.',
     img: '/linkedin-posts/03-commitlint/1.jpg',
     link: '/pages/03-commitlint'
+  },
+  {
+    title: '4. Documentation',
+    description: 'Document code, components, and systems effectively.',
+    img: '/linkedin-posts/04-documentation/1.jpg',
+    link: '/pages/04-documentation'
   }
 ]
 </script>
