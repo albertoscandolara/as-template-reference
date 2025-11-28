@@ -60,5 +60,6 @@ npx husky add .husky/pre-commit "npm test"
 ```
 
 ## Useful links
+
 - [NPM](https://www.npmjs.com/package/husky)
 - [Linkedin post](https://www.linkedin.com/posts/alberto-scandolara-1391a1161_husky-activity-7395374131904471040-UBZ8?utm_source=share&utm_medium=member_desktop&rcm=ACoAACamDX0BK3N7o8SxZvoV-hVVD9MzaGojAg4)
