@@ -1,11 +1,41 @@
 # dependencies
 node_modules/
+yarn.lock
+pnpm-lock.yaml
 
-# builds
+# compiled output
 dist/
 build/
+lib/
+out/
+*.tsbuildinfo
 
-# environment files
-.env
+# test coverage
+coverage/
 
+# logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# IDE/editor-specific
+.vscode/
 .idea/
+*.sw?
+*.sublime-project
+*.sublime-workspace
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# environment
+.env
+.env.*.local
+.env.local
+
+# jest
+jest-cache/
+jest-config.json
