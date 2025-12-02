@@ -7,3 +7,5 @@ build/
 
 # environment files
 .env
+
+.idea/

@@ -52,7 +52,7 @@ Where:
 
 | Type          | Description                                      |
 |---------------|--------------------------------------------------|
-| feature, fix  | new feature                                      |
+| feature, feat | new feature                                      |
 | bugfix, fix   | bug fix                                          |
 | hotfix        | urgent fixes                                     |
 | release       | preparing a new release                          |
