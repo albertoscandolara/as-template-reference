@@ -35,7 +35,6 @@ This leads to several problems:
 - **Higher long-term maintenance cost**: manual release overhead accumulates.
 - **Slower development**: time spent on release logistics slows feature work.
 
----
 
 ## The tool: semantic-release
 
