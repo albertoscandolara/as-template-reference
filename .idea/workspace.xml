@@ -5,9 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fbbe25ca-0273-4421-90df-b062d93a7cd0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/library/constants/application.constant.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/library/main.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vite.config.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/pages/05-semantic-release.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/public/linkedin-posts/05-semantic-release/1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/public/linkedin-posts/05-semantic-release/2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/public/linkedin-posts/05-semantic-release/3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/public/linkedin-posts/05-semantic-release/4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/public/linkedin-posts/05-semantic-release/5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/public/linkedin-posts/05-semantic-release/6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/public/linkedin-posts/05-semantic-release/7.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,7 +44,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "fix/semantic-release-fix",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/alber/Desktop/CV/as-template-reference/src/library/constants",
     "node.js.detected.package.eslint": "true",
@@ -60,11 +65,11 @@
       <recent name="C:\Users\alber\Desktop\CV\as-template-reference\.husky" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\alber\Desktop\CV\as-template-reference\docs\public\linkedin-posts\05-semantic-release" />
       <recent name="C:\Users\alber\Desktop\CV\as-template-reference\src\library" />
       <recent name="C:\Users\alber\Desktop\CV\as-template-reference\docs\public\linkedin-posts\04-documentation" />
       <recent name="C:\Users\alber\Desktop\CV\as-template-reference\docs\public" />
       <recent name="C:\Users\alber\Desktop\CV\as-template-reference\docs" />
-      <recent name="C:\Users\alber\Desktop\CV\as-template-reference\src" />
     </key>
   </component>
   <component name="SharedIndexes">

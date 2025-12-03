@@ -31,6 +31,12 @@ const features = [
     description: 'Document code, components, and systems effectively.',
     img: '/linkedin-posts/04-documentation/1.jpg',
     link: '/pages/04-documentation'
+  },
+  {
+    title: '5. Semantic release',
+    description: 'Automate versioning and releases with semantic-release.',
+    img: '/linkedin-posts/05-semantic-release/1.jpg',
+    link: '/pages/05-semantic-release'
   }
 ]
 </script>
