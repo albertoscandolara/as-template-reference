@@ -149,4 +149,4 @@ chore(repo): reorganize scripts
 - [Semantic versioning](https://semver.org/)
 - [Semantic release](https://github.com/semantic-release/semantic-release)
 - [commitlint](./03-commitlint.md)
-- [Husky](./01-husky.md)
+- [Husky](./01-husky.md) 
