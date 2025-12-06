@@ -37,6 +37,12 @@ const features = [
     description: 'Automate versioning and releases with semantic-release.',
     img: '/linkedin-posts/05-semantic-release/1.jpg',
     link: '/pages/05-semantic-release'
+  },
+  {
+    title: '6. Commitizen',
+    description: 'Automate versioning and releases with semantic-release.',
+    img: '/linkedin-posts/05-semantic-release/1.jpg',
+    link: '/pages/06-commitizen'
   }
 ]
 </script>

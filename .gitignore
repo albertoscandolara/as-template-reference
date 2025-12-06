@@ -39,3 +39,7 @@ Thumbs.db
 # jest
 jest-cache/
 jest-config.json
+
+# VitePress
+.vitepress/cache/
+.vitepress/dist/
