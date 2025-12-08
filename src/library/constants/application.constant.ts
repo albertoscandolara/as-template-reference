@@ -1,4 +1,4 @@
 /**
  * The name of the application.
  */
-export const APPLICATION_NAME: string = 'as-template-reference';
+export const APPLICATION_NAME = 'as-template-reference';
