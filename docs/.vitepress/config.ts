@@ -18,7 +18,7 @@ export default defineConfig({
           { text: 'Semantic release', link: '/pages/05-semantic-release' },
           { text: 'Commitizen', link: '/pages/06-commitizen' },
           { text: 'Eslint', link: '/pages/07-eslint' },
-          { text: 'Prettier', link: '/pages/08-prettier' },
+          //{ text: 'Prettier', link: '/pages/08-prettier' },
         ],
       },
     ],

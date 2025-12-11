@@ -46,16 +46,18 @@ const features = [
   },
   {
     title: '7. Eslint',
-    description: 'Apply consistent, automated formatting across your project.',
+    description: 'Catch bugs early and enforce consistent code quality.',
     img: '/linkedin-posts/07-eslint/1.jpg',
     link: '/pages/07-eslint'
   },
+/*
   {
     title: '8. Prettier',
-    description: 'Apply consistent, automated formatting across your project.',
+    description: 'Automatically format code for clean, consistent structure.',
     img: '/linkedin-posts/08-prettier/1.jpg',
     link: '/pages/08-prettier'
   }
+*/
 ]
 </script>
 

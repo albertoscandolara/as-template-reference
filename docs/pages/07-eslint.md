@@ -6,6 +6,7 @@
 '/linkedin-posts/07-eslint/3.jpg',
 '/linkedin-posts/07-eslint/4.jpg',
 '/linkedin-posts/07-eslint/5.jpg',
+'/linkedin-posts/07-eslint/6.jpg',
 ]" />
 
 ## The problem
