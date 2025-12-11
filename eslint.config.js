@@ -6,13 +6,14 @@ import js from '@eslint/js';
 import eslintPluginRegExp from 'eslint-plugin-regexp';
 import eslintPluginImportX from 'eslint-plugin-import-x';
 import eslintPluginSecurity from 'eslint-plugin-security';
+import path from 'path';
 
 export default [
   // ----------------------------------------------------
   // Ignore build artifacts
   // ----------------------------------------------------
   {
-    ignores: ['dist', 'node_modules'],
+    ignores: ['dist', 'node_modules', 'docs/**', 'vite.config.ts', 'vitepress.config.ts'],
   },
 
   // ----------------------------------------------------
@@ -45,7 +46,7 @@ export default [
     languageOptions: {
       parserOptions: {
         project: ['./tsconfig.json'],
-        tsconfigRootDir: import.meta.dirname,
+        tsconfigRootDir: path.resolve(),
       },
     },
 
@@ -99,9 +100,6 @@ export default [
       '@typescript-eslint/no-confusing-void-expression': 'error',
       '@typescript-eslint/prefer-nullish-coalescing': 'error',
 
-      // You specifically want this:
-      curly: ['error', 'all'],
-
       // ----------------------------------------------
       // IMPORT RULES — ULTRA STRICT
       // ----------------------------------------------
@@ -125,7 +123,7 @@ export default [
       'import/no-relative-parent-imports': 'error',
 
       // ----------------------------------------------
-      // REGEXP RULES (Strict)
+      // REGEXP RULES
       // ----------------------------------------------
       'regexp/no-dupe-disjunctions': 'error',
       'regexp/no-empty-capturing-group': 'error',
@@ -151,6 +149,9 @@ export default [
       'no-var': 'error',
       'prefer-const': 'error',
       'no-return-await': 'error',
+
+      // Specific rules
+      curly: ['error', 'all'],
     },
   },
 ];

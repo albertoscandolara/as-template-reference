@@ -41,5 +41,5 @@ jest-cache/
 jest-config.json
 
 # VitePress
-.vitepress/cache/
-.vitepress/dist/
+docs/.vitepress/cache/
+docs/.vitepress/dist/
