@@ -48,9 +48,9 @@ Prettier emerged as a dedicated code formatter designed to handle all purely sty
 Today, the recommended approach is:
 
 - **ESLint focuses on code quality**, enforcing best practices, detecting bugs, ensuring safe patterns, verifying imports and maintaining architectural conventions.
-- **Prettier formats your code**, taking care of indentation, line width, quotes, semicolons, trailing commas, spacing, and overall layout
+- **Prettier formats your code**, taking care of indentation, line width, quotes, semicolons, trailing commas, spacing, and overall layout.
 
-## The Core idea
+## The core idea
 
 **ESLint’s purpose is not to dictate how JavaScript should be written.**
 Its role is to **let teams define their own conventions and enforce them consistently**, so all contributors produce code that follows the same shared expectations.
@@ -86,8 +86,6 @@ These aren’t “global standards”, rather collections of rules teams choose 
 Editor extensions, CI pipelines, and pre-commit hooks make ESLint a background guardian.
 Developers get immediate feedback, and the codebase stays disciplined automatically, without relying on memory or personal habits.
 
-Here it is in **Markdown format**:
-
 ## CI Enforcement
 
 Linting rules are most effective when they run automatically, not only on local machines, but also before code is committed or pushed.
@@ -98,7 +96,7 @@ Linting rules are most effective when they run automatically, not only on local 
 
 Typical setup:
 
-- A _pre-commit_ hook runs ESLint on staged files.
+- A pre-commit hook runs ESLint on staged files.
 - If any rule fails, the commit is blocked.
 - Automatic fixes are applied when possible.
 
@@ -106,7 +104,7 @@ This prevents rule violations from ever entering the repository.
 
 ### Pre-push or CI validation
 
-For broader enforcement, a _pre-push_ hook or a CI pipeline can run ESLint on the entire repository. This ensures that even code not covered by pre-commit checks still conforms to the configured rules before integration.
+For broader enforcement, a pre-push hook or a CI pipeline can run ESLint on the entire repository. This ensures that even code not covered by pre-commit checks still conforms to the configured rules before integration.
 
 ## Useful links
 
