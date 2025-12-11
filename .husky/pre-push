@@ -1,2 +1,5 @@
 # 1️⃣ Check branch name
 scripts/check-branch.sh
+
+# 2️⃣ Run full ESLint check
+scripts/lint-project.sh || exit 1

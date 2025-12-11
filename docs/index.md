@@ -1,9 +1,9 @@
 ---
 layout: home
 hero:
-  name: "as-template-reference"
-  text: "A solid reference template for all your repos."
-  tagline: "Build better projects, faster."
+  name: 'as-template-reference'
+  text: 'A solid reference template for all your repos.'
+  tagline: 'Build better projects, faster.'
 ---
 
 <script setup>
@@ -40,9 +40,21 @@ const features = [
   },
   {
     title: '6. Commitizen',
-    description: 'Automate versioning and releases with semantic-release.',
-    img: '/linkedin-posts/05-semantic-release/1.jpg',
+    description: 'Unified, automated formatting for your codebase.',
+    img: '/linkedin-posts/06-commitizen/1.jpg',
     link: '/pages/06-commitizen'
+  },
+  {
+    title: '7. Eslint',
+    description: 'Apply consistent, automated formatting across your project.',
+    img: '/linkedin-posts/07-eslint/1.jpg',
+    link: '/pages/07-eslint'
+  },
+  {
+    title: '8. Prettier',
+    description: 'Apply consistent, automated formatting across your project.',
+    img: '/linkedin-posts/08-prettier/1.jpg',
+    link: '/pages/08-prettier'
   }
 ]
 </script>
