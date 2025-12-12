@@ -50,14 +50,12 @@ const features = [
     img: '/linkedin-posts/07-eslint/1.jpg',
     link: '/pages/07-eslint'
   },
-/*
   {
     title: '8. Prettier',
     description: 'Automatically format code for clean, consistent structure.',
     img: '/linkedin-posts/08-prettier/1.jpg',
     link: '/pages/08-prettier'
   }
-*/
 ]
 </script>
 

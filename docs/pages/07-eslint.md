@@ -109,4 +109,5 @@ For broader enforcement, a pre-push hook or a CI pipeline can run ESLint on the 
 ## Useful links
 
 - [Eslint](https://eslint.org/)
-- [Prettier](https://prettier.io/)
+- [Prettier](./08-prettier.md)
+- [Husky](./01-husky.md)
