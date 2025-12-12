@@ -29,7 +29,7 @@ Without a shared style:
 Prettier is an **opinionated code formatter** that:
 
 - completely ignores your original formatting
-- parses the code into an Abstract Syntax Tree (AST)
+- parses the code into an [Abstract Syntax Tree (AST)](https://dev.to/balapriya/abstract-syntax-tree-ast-explained-in-plain-english-1h38)
 - reprints it consistently, based on a maximum line length
 - formats JavaScript, TypeScript, HTML, SCSS, Markdown, JSON, YAML, Angular templates, JSX, and more
 
@@ -96,9 +96,12 @@ Typical setup:
 
 ### Pre-push or CI validation
 
-For broader enforcement, a pre-push hook or a CI pipeline can run Prettier on the entire repository, , ensuring consistent formatting across all branches.
+For broader enforcement, a pre-push hook or a CI pipeline can run Prettier on the entire repository, ensuring consistent formatting across all branches.
 
 ## Useful links
 
 - [Prettier](https://prettier.io/)
-- [Eslint](https://eslint.org/)
+- [Eslint](./07-eslint.md)
+- [Husky](./01-husky.md)
+- [What is an Abstract Syntax Tree (AST)?](https://dev.to/balapriya/abstract-syntax-tree-ast-explained-in-plain-english-1h38)
+- [AST explorer](https://astexplorer.net/)
