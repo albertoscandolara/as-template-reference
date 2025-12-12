@@ -6,6 +6,8 @@
 '/linkedin-posts/08-prettier/3.jpg',
 '/linkedin-posts/08-prettier/4.jpg',
 '/linkedin-posts/08-prettier/5.jpg',
+'/linkedin-posts/08-prettier/6.jpg',
+'/linkedin-posts/08-prettier/7.jpg',
 ]" />
 
 ## The problem
